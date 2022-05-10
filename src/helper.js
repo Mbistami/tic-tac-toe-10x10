@@ -4,7 +4,7 @@ const val_ver = (line) => {
   let res = 0;
 
   let i = 0;
-  while (len-- != -1) {
+  while (len-- !== -1) {
     while (i < line.length && line[i] != null && line[i] === line[i + 1]) {
       winner = line[i];
       res++;
@@ -23,7 +23,7 @@ export function calculateWinner(squares) {
 
   m[line] = squares.slice(line, 10);
   squares.forEach((e, i) => {
-    if (line != parseInt(i / 10)) {
+    if (line !== parseInt(i / 10)) {
       line = parseInt(i / 10);
       let l = squares.slice(i, i + 10);
       m[line] = l;
@@ -112,7 +112,7 @@ export function calculateWinner(squares) {
         m[k] &&
         m[k + 1] &&
         m[k][j] &&
-        m[k][j] == m[k + 1][j] &&
+        m[k][j] === m[k + 1][j] &&
         m[k][j] !== null
       ) {
         occ++;
