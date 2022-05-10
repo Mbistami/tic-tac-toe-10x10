@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { calculateWinner } from "../helper";
 import Board from "./Board";
 
-const Game = () => {
-  const [history, setHistory] = useState([Array(9).fill(null)]);
+const Game = ({ isCmp }) => {
+  const [history, setHistory] = useState([Array(100).fill(null)]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXisNext] = useState(true);
+  const [WonXGames, setWonXGames] = useState(0);
+  const [WonOGames, setWonOGames] = useState(0);
   const winner = calculateWinner(history[stepNumber]);
   const xO = xIsNext ? "X" : "O";
 
@@ -14,12 +16,22 @@ const Game = () => {
     const current = historyPoint[stepNumber];
     const squares = [...current];
     // return if won or occupied
-    if (winner || squares[i]) return;
+    console.log(winner);
+    if (winner || squares[i]) {
+      setHistory([Array(100).fill(null)]);
+      setStepNumber(0);
+      if (winner == "X") setWonXGames(WonXGames + 1);
+      else setWonOGames(WonOGames + 1);
+      return;
+    }
     // select square
     squares[i] = xO;
     setHistory([...historyPoint, squares]);
     setStepNumber(historyPoint.length);
-    setXisNext(!xIsNext);
+    // setXisNext(!xIsNext);
+    let v = parseInt(Math.random() * 100);
+    while (v > 100 || squares[v] != null) v = parseInt(Math.random() * 100);
+    squares[v] = xIsNext ? "O" : "X";
   };
 
   const jumpTo = (step) => {
@@ -39,7 +51,19 @@ const Game = () => {
 
   return (
     <>
-      <h1>React Tic Tac Toe - With Hooks</h1>
+      <div className="center">
+        <h1>Tic Tac Toe</h1>
+      </div>
+      <div className="score-board">
+        <div className="row">
+          <p>Red Player (X):</p>
+          <p>{WonXGames}</p>
+        </div>
+        <div className="row">
+          <p>{WonOGames} </p>
+          <p>:(O) Green Player</p>
+        </div>
+      </div>
       <Board squares={history[stepNumber]} onClick={handleClick} />
       <div className="info-wrapper">
         <div>

@@ -27,7 +27,7 @@ h1 {
   width: 500px;
   height: 500px;
   display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
   gap: 1rem;
 }
 
@@ -42,9 +42,11 @@ h1 {
 
 .X {
   color: red;
+  font-size: 28px;
 }
 .O {
   color: green;
+  font-size: 28px;
 }
 
 .info-wrapper {
@@ -68,4 +70,50 @@ li {
   cursor: pointer;
   padding: 0.5rem;
   margin: 0.5rem 1rem;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.score-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.score-board > p {
+  font-size: 16px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-menu {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 85vh;
+  align-items: center;
+}
+
+.main-menu > p{
+  font-size: 26px;
+  margin-top: 30px;
+  text-transform: uppercase;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.main-menu > p:hover {
+  transform: scale(1.1);
+
 }
