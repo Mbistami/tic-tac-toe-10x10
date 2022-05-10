@@ -5,7 +5,7 @@ const val_ver = (line) => {
 
   let i = 0;
   while (len-- != -1) {
-    while (i < line.length && line[i] != null && line[i] == line[i + 1]) {
+    while (i < line.length && line[i] != null && line[i] === line[i + 1]) {
       winner = line[i];
       res++;
       i++;
@@ -44,8 +44,8 @@ export function calculateWinner(squares) {
         m[k] &&
         m[k + 1] &&
         m[k][j] &&
-        m[k][j] == m[k + 1][j + 1] &&
-        m[k][j] != null
+        m[k][j] === m[k + 1][j + 1] &&
+        m[k][j] !== null
       ) {
         latest = m[k][j];
         occ++;
@@ -56,8 +56,8 @@ export function calculateWinner(squares) {
         m[j] &&
         m[j + 1] &&
         m[j][k] &&
-        m[j][k] == m[j + 1][k + 1] &&
-        m[j][k] != null
+        m[j][k] === m[j + 1][k + 1] &&
+        m[j][k] !== null
       ) {
         latest_ = m[j][k];
         occ_++;
@@ -65,7 +65,7 @@ export function calculateWinner(squares) {
         k++;
       }
       if (occ >= 5 || occ_ >= 5) return latest ? latest : latest_;
-      if (k == 9) break;
+      if (k === 9) break;
       k++;
     }
   }
@@ -78,8 +78,8 @@ export function calculateWinner(squares) {
         m[k] &&
         m[k + 1] &&
         m[k][j] &&
-        m[k][j] == m[k - 1][j - 1] &&
-        m[k][j] != null
+        m[k][j] === m[k - 1][j - 1] &&
+        m[k][j] !== null
       ) {
         occ++;
         j--;
@@ -90,8 +90,8 @@ export function calculateWinner(squares) {
         m[j] &&
         m[j + 1] &&
         m[j][k] &&
-        m[j][k] == m[j + 1][k - 1] &&
-        m[j][k] != null
+        m[j][k] === m[j + 1][k - 1] &&
+        m[j][k] !== null
       ) {
         occ_++;
         j++;
@@ -100,7 +100,7 @@ export function calculateWinner(squares) {
       }
 
       if (occ >= 5 || occ_ >= 5) return latest ? latest : latest_;
-      if (k == 0) break;
+      if (k === 0) break;
       k--;
     }
   }
@@ -113,7 +113,7 @@ export function calculateWinner(squares) {
         m[k + 1] &&
         m[k][j] &&
         m[k][j] == m[k + 1][j] &&
-        m[k][j] != null
+        m[k][j] !== null
       ) {
         occ++;
         k++;

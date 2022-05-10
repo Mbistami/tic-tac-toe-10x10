@@ -20,7 +20,7 @@ const Game = ({ isCmp }) => {
     if (winner || squares[i]) {
       setHistory([Array(100).fill(null)]);
       setStepNumber(0);
-      if (winner == "X") setWonXGames(WonXGames + 1);
+      if (winner === "X") setWonXGames(WonXGames + 1);
       else setWonOGames(WonOGames + 1);
       return;
     }

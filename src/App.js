@@ -9,7 +9,7 @@ const App = () => {
       {!isGameStarted ? (
         <MainMenu startGame={setIsGameStarted} />
       ) : (
-        <Game isCmp={isGameStarted == "cmp" ? true : false} />
+        <Game isCmp={isGameStarted === "cmp" ? true : false} />
       )}
     </div>
   );
