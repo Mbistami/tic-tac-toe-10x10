@@ -28,10 +28,11 @@ const Game = ({ isCmp }) => {
     squares[i] = xO;
     setHistory([...historyPoint, squares]);
     setStepNumber(historyPoint.length);
-    // setXisNext(!xIsNext);
     let v = parseInt(Math.random() * 100);
-    while (v > 100 || squares[v] != null) v = parseInt(Math.random() * 100);
-    squares[v] = xIsNext ? "O" : "X";
+    if (isCmp) {
+      while (v > 100 || squares[v] != null) v = parseInt(Math.random() * 100);
+      squares[v] = xIsNext ? "O" : "X";
+    } else setXisNext(!xIsNext);
   };
 
   const jumpTo = (step) => {
